@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { useExpressServer, useContainer } from 'routing-controllers';
+import { useContainer } from 'routing-controllers';
 import { Container } from 'typedi';
 import * as logger from 'morgan';
 import * as path from 'path';
@@ -14,7 +14,6 @@ export default class Server {
     this.app = express();
     this.config();
     this.route();
-    this.setControllers();
   }
 
   public config() {
@@ -34,13 +33,6 @@ export default class Server {
       } else {
         res.sendFile(path.join(this.distFolder, 'index.html'));
       }
-    });
-  }
-
-  public setControllers() {
-    useExpressServer(this.app, {
-      routePrefix: 'api',
-      controllers: []//[ContactController],
     });
   }
 
