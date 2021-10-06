@@ -31,7 +31,7 @@ export default class Server {
       if (req.url.indexOf('/api') !== -1) {
         next();
       } else {
-        res.sendFile(path.join(this.distFolder, 'index.html'));
+        res.sendFile(path.join('dist/client', 'index.html'));
       }
     });
   }
