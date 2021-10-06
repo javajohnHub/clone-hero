@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 
 export default class Server {
   public app: express.Application;
-  private distFolder = '/dist/client';//path.join(__dirname, '..', 'client');
+  private distFolder = path.join(__dirname, '..', 'client');
 
   constructor() {
     useContainer(Container);
