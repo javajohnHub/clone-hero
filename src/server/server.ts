@@ -4,7 +4,6 @@ import { Container } from 'typedi';
 import * as logger from 'morgan';
 import * as path from 'path';
 import * as helmet from 'helmet';
-import { ContactController } from './controllers/ContactController';
 
 export default class Server {
   public app: express.Application;
@@ -41,7 +40,7 @@ export default class Server {
   public setControllers() {
     useExpressServer(this.app, {
       routePrefix: 'api',
-      controllers: [ContactController],
+      controllers: []//[ContactController],
     });
   }
 
