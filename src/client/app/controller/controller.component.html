@@ -1,24 +1,39 @@
 <ng-container *ngIf="myGamepad && myGamepad.buttons.length; else noPad">
-  <div class="container" >
+  <div class="container">
     <div class="top-container">
-    <ng-container *ngFor="let button of myGamepad.buttons; let i=index;trackBy: trackByFn">
-      <ng-container *ngIf="i < 5">
-        <div class="button" [ngStyle]="{backgroundColor: colors[i], opacity: pressed[i] ? '1' : '0.5'}"><img src="assets/Skull-Icon.svg" alt="My Happy SVG"/></div>
+      <ng-container *ngFor="let button of myGamepad.buttons; let i = index; trackBy: trackByFn">
+        <ng-container *ngIf="i < 5">
+          <div
+            class="button"
+            [ngStyle]="{ backgroundColor: colors[i], opacity: pressed[i] ? '1' : '0.5' }"
+          >
+            <img src="assets/Skull-Icon.svg" alt="My Happy SVG" />
+          </div>
+        </ng-container>
       </ng-container>
-    </ng-container>
-  </div>
+    </div>
     <div class="strum-container">
-      <div class="strumbar" [ngClass]="{up: up && !down, down: down && !up}">
-      </div>
-  </div>
-  <div class="donations">
-    <img src="assets/code.png">
-    <div>Donations</div>
-  </div>
+      <div class="strumbar" [ngClass]="{ up: up && !down, down: down && !up }"></div>
+    </div>
+    <div class="donations">
+      <img src="assets/code.png" />
+      <div>Donations</div>
+    </div>
   </div>
 </ng-container>
 <ng-template #noPad>
-  <div class="container" >
-    <h2 style="color: white;">No Controller Detected</h2>
+  <div class="container">
+    <h2 style="color: white">No Controller Detected</h2>
   </div>
 </ng-template>
+<div style="color: white">
+  <button (click)="showMapping()">Help me map more guitars</button>
+  <br/>
+  <ng-container *ngIf="show">
+    Controller Id: <span style="color: lightblue;">{{ myGamepad.id }}</span><br/>
+    Press a Button to get Index: <span style="color: lightblue;">{{pressedNow}}</span>
+  <br/><br/>
+  Reply to this reddit post with your controller id and button index for each button. green = 0; red=1, up = 8 etc.<br/> ty<br/>
+  <a href="https://www.reddit.com/r/CloneHero/comments/q2otej/i_watched_a_video_of_a_streamer_who_displayed_his/">Reddit post</a>
+  </ng-container>
+</div>

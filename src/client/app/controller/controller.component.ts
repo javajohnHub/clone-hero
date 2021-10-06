@@ -17,6 +17,8 @@ export class ControllerComponent implements OnInit {
   up = false;
   down = false;
   strum = false;
+  show = false;
+  pressedNow = [];
   constructor() {
   }
 
@@ -48,7 +50,7 @@ export class ControllerComponent implements OnInit {
               }
               // button is pressed; indicate this on the page
               this.pressed[buttonIndex] = true;
-
+              this.pressedNow = buttonIndex
             }else {
               this.pressed[buttonIndex] = false;
             }
@@ -59,6 +61,9 @@ export class ControllerComponent implements OnInit {
     }, 5);
   }
 
+  showMapping(){
+    this.show = !this.show;
+  }
   trackByFn(index: number) {
     return index;
   }

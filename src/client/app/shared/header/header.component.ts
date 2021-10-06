@@ -25,4 +25,7 @@ export class HeaderComponent implements OnInit {
     evt.preventDefault();
     this.logedIn.emit();
   }
+  openSettings(){
+    
+  }
 }
