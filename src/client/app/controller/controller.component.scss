@@ -1,0 +1,85 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black !important;
+    color: white;
+    height: 100px;
+    width:100%;
+    overflow: hidden;
+  }
+  
+  h4 {
+    padding: 0;
+    margin: 4px;
+    span {
+      color: lightblue;
+    }
+  }
+  .container {
+    margin-top: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black !important;
+    overflow: hidden;
+  }
+
+  .donations {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      img {
+          width: 150px;
+          height: 150px;
+      }
+  }
+  .top-container {
+    display: flex;
+    flex-direction: row;
+  }
+  img {
+    height: 50px;
+      width: 50px;
+    svg {
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .button {
+    height: 100px;
+    width: 100px;
+    border: 4px solid white;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  
+  .strum-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .strumbar {
+      width: 300px;
+      height: 50px;
+      background-color: lightgrey;
+      border-radius: 10px;
+      &.up {
+        background: linear-gradient(to top, grey 50%, lightgrey 50%);
+      }
+      &.down {
+        background: linear-gradient(to bottom, grey 50%, lightgrey 50%);
+      }
+  }
+  
+  }
+  
+  
+  
