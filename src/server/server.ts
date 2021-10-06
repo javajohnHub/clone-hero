@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 
 export default class Server {
   public app: express.Application;
-  private distFolder = path.join(__dirname, '..', 'client');
+  private distFolder = '/dist/client';//path.join(__dirname, '..', 'client');
 
   constructor() {
     useContainer(Container);
@@ -31,7 +31,7 @@ export default class Server {
       if (req.url.indexOf('/api') !== -1) {
         next();
       } else {
-        res.sendFile(path.join('dist/client', 'index.html'));
+        res.sendFile(path.join(this.distFolder, 'index.html'));
       }
     });
   }
