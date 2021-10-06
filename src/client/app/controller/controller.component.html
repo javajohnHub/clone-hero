@@ -1,5 +1,36 @@
+
 <ng-container *ngIf="myGamepad && myGamepad.buttons.length; else noPad">
   <div class="container">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Active Controller</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Self Mapper Coming Soon.<br/><br/>
+
+            For Now: <br/>
+            <div style="color: black">
+              <ng-container *ngIf="myGamepad && myGamepad.id">
+                Controller Id: <span style="color: maroon;">{{ myGamepad.id }}</span><br/>
+                Press a Button to get Index: <span style="color: maroon;">{{pressedNow}}</span>
+              <br/><br/>
+              Reply to this reddit post with your controller id and button index for each button. green = 0; red=1, up = 8 etc.<br/> ty<br/>
+              <a href="https://www.reddit.com/r/CloneHero/comments/q2otej/i_watched_a_video_of_a_streamer_who_displayed_his/">Reddit post</a>
+              </ng-container>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="top-container">
       <ng-container *ngFor="let button of myGamepad.buttons; let i = index; trackBy: trackByFn">
         <ng-container *ngIf="i < 5">
@@ -15,6 +46,9 @@
     <div class="strum-container">
       <div class="strumbar" [ngClass]="{ up: up && !down, down: down && !up }"></div>
     </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch Controller Mapper
+    </button>
     <div class="donations">
       <img src="assets/code.png" />
       <div>Donations</div>
@@ -26,14 +60,4 @@
     <h2 style="color: white">No Controller Detected</h2>
   </div>
 </ng-template>
-<div style="color: white">
-  <button (click)="showMapping()">Help me map more guitars</button>
-  <br/>
-  <ng-container *ngIf="show && myGamepad && myGamepad.id">
-    Controller Id: <span style="color: lightblue;">{{ myGamepad.id }}</span><br/>
-    Press a Button to get Index: <span style="color: lightblue;">{{pressedNow}}</span>
-  <br/><br/>
-  Reply to this reddit post with your controller id and button index for each button. green = 0; red=1, up = 8 etc.<br/> ty<br/>
-  <a href="https://www.reddit.com/r/CloneHero/comments/q2otej/i_watched_a_video_of_a_streamer_who_displayed_his/">Reddit post</a>
-  </ng-container>
-</div>
+
