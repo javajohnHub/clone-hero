@@ -7,7 +7,7 @@ import * as helmet from 'helmet';
 
 export default class Server {
   public app: express.Application;
-  private distFolder = path.join(__dirname, '..', 'client');
+  private distFolder = path.join(__dirname, '..', 'dist/client');
 
   constructor() {
     useContainer(Container);
@@ -21,7 +21,7 @@ export default class Server {
     this.app.set('views', 'src');
     this.app.use(logger('dev'));
     this.app.use(helmet());
-
+    console.log(this.distFolder)
     // Server static files from /dist
     this.app.get('*.*', express.static(this.distFolder));
   }
@@ -31,6 +31,7 @@ export default class Server {
       if (req.url.indexOf('/api') !== -1) {
         next();
       } else {
+        console.log(this.distFolder)
         res.sendFile(path.join(this.distFolder, 'index.html'));
       }
     });
