@@ -1,7 +1,7 @@
 
-<ng-container *ngIf="myGamepad && myGamepad.buttons.length; else noPad">
+<ng-container *ngIf="myGamepad$ | async as myGamepad; else noPad">
   <div class="container">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div  class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -12,7 +12,15 @@
           </div>
           <div class="modal-body">
             Self Mapper Coming Soon.<br/><br/>
-
+            <!-- <form [FormGroup]="mapform" *ngIf="mapForm && mapForm.get('buttons')">
+              Green: <input type="number" [limit]="buttonArray.controls.length" (change)="setGreen($event)">
+              Red: <input type="number" [max]="buttonArray.controls.length" (change)="setRed($event)">
+              yellow: <input type="number" [max]="buttonArray.controls.length" (change)="setYellow($event)">
+              Blue: <input type="number" [max]="buttonArray.controls.length" (change)="setBlue($event)">
+              Orange: <input type="number" [max]="buttonArray.controls.length" (change)="setOrange($event)">
+              Strum Up: <input type="number" [max]="buttonArray.controls.length" (change)="setUp($event)">
+              Strum Down: <input type="number" [max]="buttonArray.controls.length" (change)="setDown($event)">
+            </form> -->
             For Now: <br/>
             <div style="color: black">
               <ng-container *ngIf="myGamepad && myGamepad.id">
@@ -26,7 +34,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" (click)="save()" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
@@ -46,7 +54,7 @@
     <div class="strum-container">
       <div class="strumbar" [ngClass]="{ up: up && !down, down: down && !up }"></div>
     </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button (click)="createButtonsForm()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
       Launch Controller Mapper
     </button>
     <div class="donations">
