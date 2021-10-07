@@ -18,7 +18,6 @@
     }
   }
   .container {
-    margin-top: 10px;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -53,8 +52,8 @@
     }
   }
   .button {
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
     border: 4px solid white;
     display: flex;
     justify-content: center;
@@ -62,14 +61,14 @@
   }
   
   .strum-container {
-    margin-top: 50px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
     .strumbar {
       width: 300px;
-      height: 50px;
+      height: 30px;
       background-color: lightgrey;
       border-radius: 10px;
       &.up {
